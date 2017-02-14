@@ -140,9 +140,6 @@ app.controller('ForecastController', function($scope){
                 toepasbaar: 'N',
                 aftrek: 2123
             }
-        },
-        test: function(){
-            return 5;
         }
     };    
 });
