@@ -148,16 +148,5 @@ app.controller('ForecastController', function($scope){
         test: function(){
             return 5;
         }
-    };
-    
-    $scope.bereken = function(){
-        var f = $scope.forecast;
-        f.maandelijkseUren = f.uren * f.dagenpermaand;
-        f.maandelijkseOmzet = f.uurtarief * f.maandelijkseUren;
-        f.maandelijkseBTW = f.maandelijkseOmzet * 0.21;
-        f.jaarlijkse.omzet = f.maandelijkseOmzet * 12;
-        f.jaarlijks.btw = f.jaarlijkse.omzet * 0.21;
-        $scope.forecast = f;
-    };
-    
+    };    
 });
