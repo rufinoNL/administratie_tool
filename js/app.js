@@ -32,7 +32,6 @@ app.controller('ForecastController', function($scope){
             }else{
                 belasting = winst * box1.schijf1.perc;
             }
-            console.log('Schijf1: ' + belasting); 
             return belasting;
         },
         schijf2: function(winst){
@@ -46,7 +45,6 @@ app.controller('ForecastController', function($scope){
                     belasting = winstInSchijf2 * box1.schijf2.perc;
                 }
             }
-            console.log('Schijf2: ' + belasting);
             return belasting;
         },
         schijf3: function(winst){
@@ -60,7 +58,6 @@ app.controller('ForecastController', function($scope){
                     belasting = winstInSchijf3 * box1.schijf3.perc;
                 }
             }
-            console.log('Schijf3: ' + belasting);
             return belasting;
         },
         schijf4: function(winst){
@@ -70,7 +67,6 @@ app.controller('ForecastController', function($scope){
                 var winstInSchijf4 = winst-box1.schijf4.min;
                 belasting = winstInSchijf4 * box1.schijf4.perc;
             }
-            console.log('Schijf4: ' + belasting);
             return belasting;
         }
     };
