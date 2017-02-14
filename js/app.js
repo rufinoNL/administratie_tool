@@ -124,7 +124,7 @@ app.controller('ForecastController', function($scope){
                     return schijven.schijf1(winst) + schijven.schijf2(winst) + schijven.schijf3(winst) + schijven.schijf4(winst);
                 }
             },
-            kosten: 3000
+            kosten: 0
         },
         ondernemersaftrek: {
             normuren: 1225,
