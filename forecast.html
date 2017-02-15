@@ -135,6 +135,9 @@
                             <li>
                                 <a href="facturen.html">Facturen</a>
                             </li>
+                            <li>
+                                <a href="urenregistratie.html">Urenregistratie</a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -159,100 +162,98 @@
                     <!-- --------------------------------------------------------------------------------------------- Input stuff -->
                     <div class="col-lg-4">
                         <h4>Parameters</h4>
-                        <form ng-submit="bereken()">
-                            <div class="col-lg-6">
-                                <label>Uurtarief</label>
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon"><i class="fa fa-eur"></i></span>
-                                    <input class="form-control"
-                                           type="number" 
-                                           step="0.01"
-                                           placeholder="52,50"
-                                           ng-model="forecast.uurtarief">
-                                </div>
-                                <div class="form-group input-group">
-                                    <label>Uren</label>
-                                    <input class="form-control"
-                                           type="number"
-                                           placeholder="8"
-                                           ng-model="forecast.uren">
-                                </div>
-                                <div class="form-group input-group">
-                                    <label>Dagen/maand</label>
-                                    <input class="form-control" 
-                                           type="number"
-                                           placeholder="20"
-                                           ng-model="forecast.dagenpermaand">
-                                </div>
-                                <div class="form-group input-group">
-                                    <label>Normuren</label>
-                                    <input class="form-control" 
-                                           type="number"
-                                           placeholder="1225"
-                                           ng-model="forecast.ondernemersaftrek.normuren">
-                                </div>
-                                
-                                <label>Kosten</label>
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon"><i class="fa fa-eur"></i></span>
-                                    <input class="form-control" 
-                                           type="number"
-                                           placeholder="500"
-                                           ng-model="forecast.jaarlijks.kosten">
-                                </div>
+                        <div class="col-lg-6">
+                            <label>Uurtarief</label>
+                            <div class="form-group input-group">
+                                <span class="input-group-addon"><i class="fa fa-eur"></i></span>
+                                <input class="form-control"
+                                       type="number" 
+                                       step="0.01"
+                                       placeholder="52,50"
+                                       ng-model="forecast.uurtarief">
                             </div>
-                            <!-- Kortingen -->
-                            <div class="col-lg-6">
-                                <label id="mkbvrijstellingid">MKB winstvrijstelling</label>
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-minus"></i></span>
-                                    <div class="form-group">
-                                        <select class="form-control" 
-                                                ng-model="forecast.ondernemersaftrek.mkb.toepasbaar">
-                                            <option>J</option>
-                                            <option>N</option>
-                                        </select>
-                                    </div>
-                                    <input class="form-control"
-                                           type="number"
-                                           step="0.01"
-                                           ng-model="forecast.ondernemersaftrek.mkb.percentage">
-                                </div>
+                            <div class="form-group input-group">
+                                <label>Uren</label>
+                                <input class="form-control"
+                                       type="number"
+                                       placeholder="8"
+                                       ng-model="forecast.uren">
                             </div>
-                            <div class="col-lg-6">
+                            <div class="form-group input-group">
+                                <label>Dagen/maand</label>
+                                <input class="form-control" 
+                                       type="number"
+                                       placeholder="20"
+                                       ng-model="forecast.dagenpermaand">
+                            </div>
+                            <div class="form-group input-group">
+                                <label>Normuren</label>
+                                <input class="form-control" 
+                                       type="number"
+                                       placeholder="1225"
+                                       ng-model="forecast.ondernemersaftrek.normuren">
+                            </div>
 
-                                <label id="zelfstandigenaftrekid">Zelfstandigenaftrek</label>
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-minus"></i></span>
-                                    <div class="form-group">
-                                        <select class="form-control" 
-                                                ng-model="forecast.ondernemersaftrek.zelfstandigen.toepasbaar">
-                                            <option>J</option>
-                                            <option>N</option>
-                                        </select>
-                                    </div>
-                                    <input class="form-control"
-                                           type="number"
-                                           ng-model="forecast.ondernemersaftrek.zelfstandigen.aftrek">
-                                </div>
+                            <label>Kosten</label>
+                            <div class="form-group input-group">
+                                <span class="input-group-addon"><i class="fa fa-eur"></i></span>
+                                <input class="form-control" 
+                                       type="number"
+                                       placeholder="500"
+                                       ng-model="forecast.jaarlijks.kosten">
                             </div>
-                            <div class="col-lg-6">
-                                <label id="mkbvrijstellingid">Startersaftrek</label>
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-minus"></i></span>
-                                    <div class="form-group">
-                                        <select class="form-control" 
-                                                ng-model="forecast.ondernemersaftrek.starters.toepasbaar">
-                                            <option>J</option>
-                                            <option>N</option>
-                                        </select>
-                                    </div>
-                                    <input class="form-control"
-                                           type="number"
-                                           ng-model="forecast.ondernemersaftrek.starters.aftrek">
+                        </div>
+                        <!-- Kortingen -->
+                        <div class="col-lg-6">
+                            <label id="mkbvrijstellingid">MKB winstvrijstelling</label>
+                            <div class="form-group input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-minus"></i></span>
+                                <div class="form-group">
+                                    <select class="form-control" 
+                                            ng-model="forecast.ondernemersaftrek.mkb.toepasbaar">
+                                        <option>J</option>
+                                        <option>N</option>
+                                    </select>
                                 </div>
-                            </div>                         
-                        </form>
+                                <input class="form-control"
+                                       type="number"
+                                       step="0.01"
+                                       ng-model="forecast.ondernemersaftrek.mkb.percentage">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+
+                            <label id="zelfstandigenaftrekid">Zelfstandigenaftrek</label>
+                            <div class="form-group input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-minus"></i></span>
+                                <div class="form-group">
+                                    <select class="form-control" 
+                                            ng-model="forecast.ondernemersaftrek.zelfstandigen.toepasbaar">
+                                        <option>J</option>
+                                        <option>N</option>
+                                    </select>
+                                </div>
+                                <input class="form-control"
+                                       type="number"
+                                       ng-model="forecast.ondernemersaftrek.zelfstandigen.aftrek">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label id="mkbvrijstellingid">Startersaftrek</label>
+                            <div class="form-group input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-minus"></i></span>
+                                <div class="form-group">
+                                    <select class="form-control" 
+                                            ng-model="forecast.ondernemersaftrek.starters.toepasbaar">
+                                        <option>J</option>
+                                        <option>N</option>
+                                    </select>
+                                </div>
+                                <input class="form-control"
+                                       type="number"
+                                       ng-model="forecast.ondernemersaftrek.starters.aftrek">
+                            </div>
+                        </div>                         
                     </div>
                     <!-- --------------------------------------------------------------------------------------------- Maandelijkse omzet -->
                     <div class="col-lg-4">
