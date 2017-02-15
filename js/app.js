@@ -143,3 +143,30 @@ app.controller('ForecastController', function($scope){
         }
     };    
 });
+
+app.controller('UrenregistratieController', function($scope){
+    $scope.klanten = [
+        {
+            id: 1,
+            naam: 'Humint',
+            straat: 'Straat',
+            huisnummer: 11
+            
+        },
+        {
+            id: 2,
+            naam: 'Angarde',
+            straat: 'Strasse',
+            huisnummer: 22
+            
+        }
+    ]
+    
+    
+    $scope.urenreg = {
+        uren: 0,
+        datum: new Date(),
+        klant: 'Humint',
+        locatie: ''
+    }
+});
