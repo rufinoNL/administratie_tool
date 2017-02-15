@@ -157,9 +157,44 @@
                 </div>
                 <!-- /.row -->
                 <div class="row"
-                     ng-controller="ForecastController">
+                     ng-controller="UrenregistratieController">
+                    <!-- --------------------------------------------------------------------------------------------- Input stuff -->
                     <div class="col-lg-6">
-                        
+                        <div class="form-group input-group">
+                            <label>Datum</label>
+                            <input class="form-control"
+                                   type="date"
+                                   ng-model="urenreg.datum">
+                        </div>
+                        <div class="form-group input-group" >
+                            <label>Klant</label>
+                            <select class="form-control" 
+                                    ng-model="urenreg.klant"
+                                    ng-options="klant.naam for klant in klanten">
+                            </select>
+                        </div>
+                        <div class="form-group input-group">
+                            <label>Uren</label>
+                            <input class="form-control"
+                                   type="number"
+                                   step="0.01"
+                                   ng-model="urenreg.uren">
+                        </div>
+                        <div class="form-group input-group">
+                            <label>Locatie</label>
+                            <input class="form-control"
+                                   type="number"
+                                   step="0.01"
+                                   ng-model="urenreg.locatie">
+                        </div>
+                        Locatie (dropdown op basis van klant)
+                    </div>
+                    <!-- Weergave -->
+                    <div class="col-lg-6">
+                        1. Kies een periode uit een kalender
+                        2. Kies of je het evt per dag/maand/jaar wilt accumuleren
+                        3. Kies of je het per klant wilt zien
+                        4. 
                     </div>
                 </div>
             </div>
