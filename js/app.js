@@ -149,23 +149,23 @@ app.controller('UrenregistratieController', function($scope){
     $scope.klanten = [
         {
             klantnummer: 23,
-            naam: 'Humint',
+            naam: 'IT special',
             facturatie: {
-                tav: 'Jouk Pols',
-                straat: 'Ereprijs',
-                huisnummer: 23,
-                huisnumertoev: '',
-                postcode: '2871 MZ',
-                plaats: 'Schoonhoven'
+                tav: 'John Doe',
+                straat: 'Karel Janssen',
+                huisnummer: 12,
+                huisnumertoev: 'A',
+                postcode: '1234AA',
+                plaats: 'Utrecgt'
             },
             opdrachten: [
                 {
-                    klant: 'RIGD-LOXIA',
-                    straat: 'Janssoenborch Godebaldkwartier',
-                    huisnummer: 385,
+                    klant: 'Superfly B.V.',
+                    straat: 'Nieuw Balans',
+                    huisnummer: 1,
                     huisnummertoev: '',
-                    postcode: '3511 DT',
-                    plaats: 'Utrecht'
+                    postcode: '1234AB',
+                    plaats: 'Rotterdam'
                 },
                 {
                     klant: 'Test',
@@ -179,27 +179,27 @@ app.controller('UrenregistratieController', function($scope){
         },
         {
             klantnummer: 1,
-            naam: 'Bedrijf',
+            naam: 'BribeIT',
             facturatie: {
-                tav: 'Persoon',
-                straat: 'Ereprijs',
-                huisnummer: 23,
+                tav: 'Marianne Oswold',
+                straat: 'Van Der Spaak',
+                huisnummer: 95,
                 huisnumertoev: '',
-                postcode: '2871 MZ',
-                plaats: 'Schoonhoven'
+                postcode: '1020RT',
+                plaats: 'Amsterdam'
             },
             opdrachten: [
                 {
-                    klant: 'Test2',
-                    straat: 'Straatje',
-                    huisnummer: 385,
+                    klant: 'Test B.V.',
+                    straat: 'Teststraat',
+                    huisnummer: 454,
                     huisnummertoev: '',
-                    postcode: '3511 DT',
+                    postcode: '1111BB',
                     plaats: 'Utrecht'
                 },
                 {
-                    klant: 'Test3',
-                    straat: 'Straat',
+                    klant: 'Van Lier',
+                    straat: 'Liersestraat',
                     huisnummer: 1,
                     huisnummertoev: 'B',
                     postcode: '1234AA',
