@@ -147,18 +147,64 @@ app.controller('ForecastController', function($scope){
 app.controller('UrenregistratieController', function($scope){
     $scope.klanten = [
         {
-            id: 1,
+            klantnummer: 23,
             naam: 'Humint',
-            straat: 'Straat',
-            huisnummer: 11
-            
+            facturatie: {
+                tav: 'Jouk Pols',
+                straat: 'Ereprijs',
+                huisnummer: 23,
+                huisnumertoev: '',
+                postcode: '2871 MZ',
+                plaats: 'Schoonhoven'
+            },
+            opdrachten: [
+                {
+                    klant: 'RIGD-LOXIA',
+                    straat: 'Janssoenborch Godebaldkwartier',
+                    huisnummer: 385,
+                    huisnummertoev: '',
+                    postcode: '3511 DT',
+                    plaats: 'Utrecht'
+                },
+                {
+                    klant: 'Test',
+                    straat: 'Straat',
+                    huisnummer: 1,
+                    huisnummertoev: 'B',
+                    postcode: '1234AA',
+                    plaats: 'Amsterdam'
+                }
+            ]
         },
         {
-            id: 2,
-            naam: 'Angarde',
-            straat: 'Strasse',
-            huisnummer: 22
-            
+            klantnummer: 1,
+            naam: 'Bedrijf',
+            facturatie: {
+                tav: 'Persoon',
+                straat: 'Ereprijs',
+                huisnummer: 23,
+                huisnumertoev: '',
+                postcode: '2871 MZ',
+                plaats: 'Schoonhoven'
+            },
+            opdrachten: [
+                {
+                    klant: 'Test2',
+                    straat: 'Straatje',
+                    huisnummer: 385,
+                    huisnummertoev: '',
+                    postcode: '3511 DT',
+                    plaats: 'Utrecht'
+                },
+                {
+                    klant: 'Test3',
+                    straat: 'Straat',
+                    huisnummer: 1,
+                    huisnummertoev: 'B',
+                    postcode: '1234AA',
+                    plaats: 'Amsterdam'
+                }
+            ]
         }
     ]
     
@@ -166,7 +212,18 @@ app.controller('UrenregistratieController', function($scope){
     $scope.urenreg = {
         uren: 0,
         datum: new Date(),
-        klant: 'Humint',
-        locatie: ''
+        klant: '',
+        locatie: '',
+        locaties: ["-- selecteer een klant --"],
+        zetLocaties: function(){
+            var l = [];
+            for(var i=0;i<this.klant.opdrachten.length;i++){
+                var adresObj = this.klant.opdrachten[i];
+                var adres = adresObj.klant + ', ' + adresObj.postcode + ' ' + adresObj.huisnummer + adresObj.huisnummertoev + ' ' + adresObj.plaats;
+
+                l.push(adres);
+            }
+            this.locaties = l;
+        }
     }
 });
