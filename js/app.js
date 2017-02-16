@@ -145,6 +145,7 @@ app.controller('ForecastController', function($scope){
 });
 
 app.controller('UrenregistratieController', function($scope){
+    //Daarna service van maken naar Mongo
     $scope.klanten = [
         {
             klantnummer: 23,
@@ -208,22 +209,96 @@ app.controller('UrenregistratieController', function($scope){
         }
     ]
     
+    $scope.uren = [
+        {
+            datum:  '2012-04-23T18:25:43.511Z',
+            klant: 'Humint',
+            opdracht:                 
+                {
+                    klant: 'Rabobank',
+                    straat: 'Straatje',
+                    huisnummer: 385,
+                    huisnummertoev: '',
+                    postcode: '3511 DT',
+                    plaats: 'Utrecht'
+                },
+            uren: 9
+        },
+        {
+            datum:  '2012-04-21T18:25:43.511Z',
+            klant: 'Humint',
+            opdracht:                 
+                {
+                    klant: 'Kennisnet',
+                    straat: 'Straatje',
+                    huisnummer: 385,
+                    huisnummertoev: '',
+                    postcode: '3511 DT',
+                    plaats: 'Utrecht'
+                },
+            uren: 9
+        },
+        {
+            datum:  '2012-05-23T18:25:43.511Z',
+            klant: 'Humint',
+            opdracht:                 
+                {
+                    klant: 'RIGD-LOXIA',
+                    straat: 'Straatje',
+                    huisnummer: 385,
+                    huisnummertoev: '',
+                    postcode: '3511 DT',
+                    plaats: 'Utrecht'
+                },
+            uren: 9
+        },
+        {
+            datum:  '2012-04-24T18:25:43.511Z',
+            klant: 'Bedrijf',
+            opdracht:                 
+                {
+                    klant: 'Ministerie van EZ',
+                    straat: 'Straatje',
+                    huisnummer: 385,
+                    huisnummertoev: '',
+                    postcode: '3511 DT',
+                    plaats: 'Utrecht'
+                },
+            uren: 9
+        }
+        
+    ]
     
     $scope.urenreg = {
-        uren: 0,
-        datum: new Date(),
-        klant: '',
-        locatie: '',
-        locaties: ["-- selecteer een klant --"],
-        zetLocaties: function(){
-            var l = [];
-            for(var i=0;i<this.klant.opdrachten.length;i++){
-                var adresObj = this.klant.opdrachten[i];
-                var adres = adresObj.klant + ', ' + adresObj.postcode + ' ' + adresObj.huisnummer + adresObj.huisnummertoev + ' ' + adresObj.plaats;
+        invoer:{
+            uren: 0,
+            datum: new Date(),
+            klant: '',
+            locatie: '',
+            locaties: ["-- selecteer eerst een klant --"],
+            zetLocaties: function(){
+                var l = [];
+                for(var i=0;i<this.klant.opdrachten.length;i++){
+                    var adresObj = this.klant.opdrachten[i];
+                    var adres = adresObj.klant + ', ' + adresObj.postcode + ' ' + adresObj.huisnummer + adresObj.huisnummertoev + ' ' + adresObj.plaats;
 
-                l.push(adres);
+                    l.push(adres);
+                }
+                this.locaties = l;
             }
-            this.locaties = l;
+        },
+        overzicht: {
+            vanaf: new Date(),
+            totenmet: new Date(),
+            groupby: {
+                selectie: '',
+                keuzes: ['dag','maand','klant', 'plaats']
+            },
+            maak: function(){
+                //service aanroep eigenlijk hier, maar nu dummy data
+                this.data = $scope.uren;
+            },
+            data: {}
         }
     }
 });

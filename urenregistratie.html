@@ -160,18 +160,19 @@
                      ng-controller="UrenregistratieController">
                     <!-- --------------------------------------------------------------------------------------------- Input stuff -->
                     <div class="col-lg-6">
+                        <h3>Invoer</h3>
                         <div class="form-group input-group">
                             <label>Datum</label>
                             <input class="form-control"
                                    type="date"
-                                   ng-model="urenreg.datum">
+                                   ng-model="urenreg.invoer.datum">
                         </div>
                         <div class="form-group input-group" >
                             <label>Klant</label>
                             <select class="form-control" 
-                                    ng-model="urenreg.klant"
+                                    ng-model="urenreg.invoer.klant"
                                     ng-options="klant.naam for klant in klanten"
-                                    ng-change="urenreg.zetLocaties()">
+                                    ng-change="urenreg.invoer.zetLocaties()">
                             </select>
                         </div>
                         <div class="form-group input-group">
@@ -179,22 +180,60 @@
                             <input class="form-control"
                                    type="number"
                                    step="0.01"
-                                   ng-model="urenreg.uren">
+                                   ng-model="urenreg.invoer.uren">
                         </div>
                         <div class="form-group input-group">
-                            <label>Locatie</label>
+                            <label class="form-control">Opdracht</label>
                             <select class="form-control" 
-                                    ng-model="urenreg.locatie"
-                                    ng-options="u for u in urenreg.locaties">
+                                    ng-model="urenreg.invoer.locatie"
+                                    ng-options="u for u in urenreg.invoer.locaties">
                             </select>
                         </div>
+                        <button class="btn btn-default">Verzenden</button>
                     </div>
                     <!-- Weergave -->
                     <div class="col-lg-6">
-                        1. Kies een periode uit een kalender
-                        2. Kies of je het evt per dag/maand/jaar wilt accumuleren
-                        3. Kies of je het per klant wilt zien
-                        4. 
+                        <h3>Overzicht gemaakte uren</h3>
+                        <div class="form-group input-group">
+                            <label class="form-control">Vanaf</label>
+                            <input class="form-control"
+                                   type="date"
+                                   ng-model="urenreg.overzicht.vanaf">
+                            <label class="form-control">Tot en met</label>
+                            <input class="form-control"
+                                   type="date"
+                                   ng-model="urenreg.overzicht.totenmet">
+                        </div>
+                        <div class="form-group input-group">
+                            <label class="form-control">Accumuleren per</label>
+                            <select class="form-control" 
+                                    ng-model="urenreg.overzicht.groupby.selectie"
+                                    ng-options="u for u in urenreg.overzicht.groupby.keuzes">
+                            </select>
+                        </div>
+                        <button class="btn btn-default" ng-click="urenreg.overzicht.maak()">Overzicht maken</button>
+                        <hr>
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped"
+                                  >
+                                <thead>
+                                    <tr>
+                                        <th>Klant</th>
+                                        <th>Datum</th>
+                                        <th>Opdracht</th>
+                                        <th>Uren</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{d.klant}}</td>
+                                        <td>{{d.datum | date:'dd/MM/yyyy'}}</td>
+                                        <td>{{d.opdracht.klant}}</td>
+                                        <td>{{d.uren}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
