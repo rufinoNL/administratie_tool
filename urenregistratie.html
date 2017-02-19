@@ -208,15 +208,13 @@
                                        type="date"
                                        ng-model="urenreg.overzicht.totenmet">
                             </div>
+                            <button class="btn btn-default" ng-click="urenreg.overzicht.maak()">Overzicht maken</button>
+                            <hr>
                             <div class="form-group input-group">
                                 <span class="input-group-addon"><i>Filter</i></span>
                                 <input class="form-control" 
                                         ng-model="urenreg.overzicht.filter.selectie">
-                                </select>
                             </div>
-                            <button class="btn btn-default" ng-click="urenreg.overzicht.maak()">Overzicht maken</button>
-                            <hr>
-                            <pre>{{urenreg.overzicht.data}}</pre>
                             <div class="table-responsive">
                                 <table class="table table-hover table-striped"
                                       >
@@ -231,7 +229,7 @@
                                     <tbody ng-repeat="d in urenreg.overzicht.data | filter:urenreg.overzicht.filter.selectie">
                                         <tr>
                                             <td>{{d.klant}}</td>
-                                            <td>{{d.datum | date:'dd/MM/yyyy'}}</td>
+                                            <td>{{d.datum | date:'dd-MM-yyyy'}}</td>
                                             <td>{{d.opdracht.klant}}</td>
                                             <td>{{d.uren}}</td>
                                         </tr>
