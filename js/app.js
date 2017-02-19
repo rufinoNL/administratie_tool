@@ -366,7 +366,9 @@ app.controller('UrenregistratieController', function($scope){
                     var datum = new Date(items[i].datum);
 
                     if (datum >= this.vanaf && datum <= this.totenmet)  {
-                        resultaat.push(items[i]);
+                        var verrijkt = items[i];
+                        verrijkt.omzet = items[i].uren * items[i].tarief;
+                        resultaat.push(verrijkt);
                     }
                 } 
             
