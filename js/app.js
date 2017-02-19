@@ -149,7 +149,7 @@ app.controller('UrenregistratieController', function($scope){
     $scope.klanten = [
         {
             klantnummer: 23,
-            naam: 'IT special',
+            naam: 'IT intermediair 1',
             facturatie: {
                 tav: 'John Doe',
                 straat: 'Karel Janssen',
@@ -198,12 +198,12 @@ app.controller('UrenregistratieController', function($scope){
                     plaats: 'Utrecht'
                 },
                 {
-                    klant: 'Van Lier',
-                    straat: 'Liersestraat',
-                    huisnummer: 1,
-                    huisnummertoev: 'B',
-                    postcode: '1234AA',
-                    plaats: 'Amsterdam'
+                    klant: 'JouwBank.nl',
+                    straat: 'Straatje',
+                    huisnummer: 385,
+                    huisnummertoev: '',
+                    postcode: '3511 DT',
+                    plaats: 'Utrecht'
                 }
             ]
         }
@@ -212,10 +212,10 @@ app.controller('UrenregistratieController', function($scope){
     $scope.uren = [
         {
             datum:  '2012-04-23T18:25:43.511Z',
-            klant: 'Humint',
+            klant: 'IT intermediair 1',
             opdracht:                 
                 {
-                    klant: 'Rabobank',
+                    klant: 'JouwBank.nl',
                     straat: 'Straatje',
                     huisnummer: 385,
                     huisnummertoev: '',
@@ -226,10 +226,10 @@ app.controller('UrenregistratieController', function($scope){
         },
         {
             datum:  '2012-04-21T18:25:43.511Z',
-            klant: 'Humint',
+            klant: 'IT intermediair 1',
             opdracht:                 
                 {
-                    klant: 'Kennisnet',
+                    klant: 'AFGE B.V.',
                     straat: 'Straatje',
                     huisnummer: 385,
                     huisnummertoev: '',
@@ -240,10 +240,10 @@ app.controller('UrenregistratieController', function($scope){
         },
         {
             datum:  '2012-05-23T18:25:43.511Z',
-            klant: 'Humint',
+            klant: 'IT intermediair 1',
             opdracht:                 
                 {
-                    klant: 'RIGD-LOXIA',
+                    klant: 'Y ME V.O.F.',
                     straat: 'Straatje',
                     huisnummer: 385,
                     huisnummertoev: '',
@@ -254,10 +254,10 @@ app.controller('UrenregistratieController', function($scope){
         },
         {
             datum:  '2012-04-24T18:25:43.511Z',
-            klant: 'Bedrijf',
+            klant: 'IT intermediair 2',
             opdracht:                 
                 {
-                    klant: 'Ministerie van EZ',
+                    klant: 'Websitebouwer B.V.',
                     straat: 'Straatje',
                     huisnummer: 385,
                     huisnummertoev: '',
