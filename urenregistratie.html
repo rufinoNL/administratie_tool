@@ -226,7 +226,9 @@
                                             <th>Uren</th>
                                         </tr>
                                     </thead>
-                                    <tbody ng-repeat="d in urenreg.overzicht.data | filter:urenreg.overzicht.filter.selectie">
+                                    <tbody ng-repeat="d in urenreg.overzicht.data | 
+                                                      betweenFilter:urenreg.overzicht.vanaf:urenreg.overzicht.totenmet | 
+                                                      filter:urenreg.overzicht.filter.selectie">
                                         <tr>
                                             <td>{{d.klant}}</td>
                                             <td>{{d.datum | date:'dd-MM-yyyy'}}</td>

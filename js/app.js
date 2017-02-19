@@ -179,7 +179,7 @@ app.controller('UrenregistratieController', function($scope){
         },
         {
             klantnummer: 1,
-            naam: 'BribeIT',
+            naam: 'IT intermediair 2',
             facturatie: {
                 tav: 'Marianne Oswold',
                 straat: 'Van Der Spaak',
@@ -190,11 +190,11 @@ app.controller('UrenregistratieController', function($scope){
             },
             opdrachten: [
                 {
-                    klant: 'Test B.V.',
-                    straat: 'Teststraat',
-                    huisnummer: 454,
+                    klant: 'Websitebouwer B.V.',
+                    straat: 'Straatje',
+                    huisnummer: 385,
                     huisnummertoev: '',
-                    postcode: '1111BB',
+                    postcode: '3511 DT',
                     plaats: 'Utrecht'
                 },
                 {
@@ -225,7 +225,7 @@ app.controller('UrenregistratieController', function($scope){
             uren: 9
         },
         {
-            datum:  '2012-04-21T18:25:43.511Z',
+            datum:  '2012-04-21T00:00:00.000Z',
             klant: 'IT intermediair 1',
             opdracht:                 
                 {
@@ -291,13 +291,27 @@ app.controller('UrenregistratieController', function($scope){
             vanaf: new Date(),
             totenmet: new Date(),
             filter: {
-                selectie: ''
+                selectie: []
             },
             maak: function(){
                 //service aanroep eigenlijk hier, maar nu dummy data
                 this.data = $scope.uren;
             },
-            data: {}
+            data: []
         }
     }
+});
+
+app.filter("betweenFilter", function() {
+    return function(items, vanaf, totenmet) {
+        var resultaat = [];        
+        for (var i=0; i<items.length; i++){
+            var datum = new Date(items[i].datum);
+        
+            if (datum >= vanaf && datum <= totenmet)  {
+                resultaat.push(items[i]);
+            }
+        }     
+        return resultaat;
+    };
 });
