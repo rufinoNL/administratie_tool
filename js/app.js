@@ -290,9 +290,8 @@ app.controller('UrenregistratieController', function($scope){
         overzicht: {
             vanaf: new Date(),
             totenmet: new Date(),
-            groupby: {
-                selectie: '',
-                keuzes: ['dag','maand','klant', 'plaats']
+            filter: {
+                selectie: ''
             },
             maak: function(){
                 //service aanroep eigenlijk hier, maar nu dummy data

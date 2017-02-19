@@ -197,29 +197,29 @@
                     <!-- Weergave -->
                     <div class="col-lg-6">
                         <h3>Overzicht gemaakte uren</h3>
-                        <div class="col-md-6">
+                        <div>
                             <div class="form-group input-group">
-                                <label class="form-control">Vanaf</label>
+                                <span class="input-group-addon"><i>Van</i></span>
                                 <input class="form-control"
                                        type="date"
                                        ng-model="urenreg.overzicht.vanaf">
-                                <label class="form-control">Tot en met</label>
+                                <span class="input-group-addon"><i>Tm</i></span>
                                 <input class="form-control"
                                        type="date"
                                        ng-model="urenreg.overzicht.totenmet">
                             </div>
                             <div class="form-group input-group">
-                                <label class="form-control">Accumuleren per</label>
-                                <select class="form-control" 
-                                        ng-model="urenreg.overzicht.groupby.selectie"
-                                        ng-options="u for u in urenreg.overzicht.groupby.keuzes">
+                                <span class="input-group-addon"><i>Filter</i></span>
+                                <input class="form-control" 
+                                        ng-model="urenreg.overzicht.filter.selectie">
                                 </select>
                             </div>
                             <button class="btn btn-default" ng-click="urenreg.overzicht.maak()">Overzicht maken</button>
                             <hr>
+                            <pre>{{urenreg.overzicht.data}}</pre>
                             <div class="table-responsive">
                                 <table class="table table-hover table-striped"
-                                      ng-repeat="urenreg.overzicht.data">
+                                      >
                                     <thead>
                                         <tr>
                                             <th>Klant</th>
@@ -228,7 +228,7 @@
                                             <th>Uren</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody ng-repeat="d in urenreg.overzicht.data | filter:urenreg.overzicht.filter.selectie">
                                         <tr>
                                             <td>{{d.klant}}</td>
                                             <td>{{d.datum | date:'dd/MM/yyyy'}}</td>
