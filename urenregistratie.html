@@ -214,10 +214,27 @@
                                 <span class="input-group-addon"><i>Filter</i></span>
                                 <input class="form-control" 
                                         ng-model="urenreg.overzicht.filter.selectie">
-                            </div>
+                            </div>   
                             <div class="table-responsive">
-                                <table class="table table-hover table-striped"
-                                      >
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Vanaf</th>
+                                            <th>Tot en met</th>
+                                            <th>Totaal uren</th>
+                                            <th>Omzet</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>{{urenreg.overzicht.totaal().periode.vanaf}}</td>
+                                            <td>{{urenreg.overzicht.totaal().periode.totenmet}}</td>
+                                            <td>{{urenreg.overzicht.totaal().uren}}</td>
+                                            <td>€ {{urenreg.overzicht.totaal().omzet | number:2}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table table-hover table-striped">
                                     <thead>
                                         <tr>
                                             <th>Klant</th>
@@ -226,9 +243,7 @@
                                             <th>Uren</th>
                                         </tr>
                                     </thead>
-                                    <tbody ng-repeat="d in urenreg.overzicht.data | 
-                                                      betweenFilter:urenreg.overzicht.vanaf:urenreg.overzicht.totenmet | 
-                                                      filter:urenreg.overzicht.filter.selectie">
+                                    <tbody ng-repeat="d in urenreg.overzicht.data | filter:urenreg.overzicht.filter.selectie" >
                                         <tr>
                                             <td>{{d.klant}}</td>
                                             <td>{{d.datum | date:'dd-MM-yyyy'}}</td>

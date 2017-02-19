@@ -222,7 +222,8 @@ app.controller('UrenregistratieController', function($scope){
                     postcode: '3511 DT',
                     plaats: 'Utrecht'
                 },
-            uren: 9
+            uren: 9,
+            tarief: 52.5
         },
         {
             datum:  '2012-04-21T00:00:00.000Z',
@@ -236,7 +237,8 @@ app.controller('UrenregistratieController', function($scope){
                     postcode: '3511 DT',
                     plaats: 'Utrecht'
                 },
-            uren: 9
+            uren: 9,
+            tarief: 52.5
         },
         {
             datum:  '2012-05-23T18:25:43.511Z',
@@ -250,7 +252,23 @@ app.controller('UrenregistratieController', function($scope){
                     postcode: '3511 DT',
                     plaats: 'Utrecht'
                 },
-            uren: 9
+            uren: 8.25,
+            tarief: 52.5
+        },
+        {
+            datum:  '2012-04-23T18:25:43.511Z',
+            klant: 'IT intermediair 2',
+            opdracht:                 
+                {
+                    klant: 'Websitebouwer B.V.',
+                    straat: 'Straatje',
+                    huisnummer: 385,
+                    huisnummertoev: '',
+                    postcode: '3511 DT',
+                    plaats: 'Utrecht'
+                },
+            uren: 7.75,
+            tarief: 67
         },
         {
             datum:  '2012-04-24T18:25:43.511Z',
@@ -264,7 +282,53 @@ app.controller('UrenregistratieController', function($scope){
                     postcode: '3511 DT',
                     plaats: 'Utrecht'
                 },
-            uren: 9
+            uren: 5.75,
+            tarief: 67
+        },
+        {
+            datum:  '2012-04-25T18:25:43.511Z',
+            klant: 'IT intermediair 2',
+            opdracht:                 
+                {
+                    klant: 'Websitebouwer B.V.',
+                    straat: 'Straatje',
+                    huisnummer: 385,
+                    huisnummertoev: '',
+                    postcode: '3511 DT',
+                    plaats: 'Utrecht'
+                },
+            uren: 8.5,
+            tarief: 67
+        },
+        {
+            datum:  '2012-04-26T18:25:43.511Z',
+            klant: 'IT intermediair 2',
+            opdracht:                 
+                {
+                    klant: 'Websitebouwer B.V.',
+                    straat: 'Straatje',
+                    huisnummer: 385,
+                    huisnummertoev: '',
+                    postcode: '3511 DT',
+                    plaats: 'Utrecht'
+                },
+            uren: 8.75,
+            tarief: 67
+        },
+        {
+            datum:  '2012-04-27T18:25:43.511Z',
+            klant: 'IT intermediair 2',
+            opdracht:                 
+                {
+                    klant: 'Websitebouwer B.V.',
+                    straat: 'Straatje',
+                    huisnummer: 385,
+                    huisnummertoev: '',
+                    postcode: '3511 DT',
+                    plaats: 'Utrecht'
+                },
+            uren: 6.25,
+            tarief: 67
         }
         
     ]
@@ -294,15 +358,50 @@ app.controller('UrenregistratieController', function($scope){
                 selectie: []
             },
             maak: function(){
-                //service aanroep eigenlijk hier, maar nu dummy data
-                this.data = $scope.uren;
+                //TODO: vervang met service
+                var items = $scope.uren;
+                var resultaat = [];
+                
+                for (var i=0; i<items.length; i++){
+                    var datum = new Date(items[i].datum);
+
+                    if (datum >= this.vanaf && datum <= this.totenmet)  {
+                        resultaat.push(items[i]);
+                    }
+                } 
+            
+                this.data = resultaat;
             },
-            data: []
+            data: [],
+            totaal: function(){
+                var resultaat = {
+                    periode: {},
+                    omzet: 0,
+                    uren: 0
+                };
+                
+                for(var i = 0;i<this.data.length;i++){
+                    resultaat.uren += this.data[i].uren;
+                    resultaat.omzet += this.data[i].uren * this.data[i].tarief;
+                }
+                
+                var vanafD = this.vanaf.getDate();
+                var vanafM = this.vanaf.getMonth() + 1;
+                var vanafJ = this.vanaf.getFullYear();
+                resultaat.periode.vanaf = vanafD + '-' + vanafM  + '-' + vanafJ;
+                
+                var tmD = this.totenmet.getDate();
+                var tmM = this.totenmet.getMonth() + 1;
+                var tmJ = this.totenmet.getFullYear();
+                resultaat.periode.totenmet = tmD + '-' + tmM  + '-' + tmJ;
+                
+                return resultaat;
+            }
         }
     }
 });
-
-app.filter("betweenFilter", function() {
+/*
+app.filter("filterBetween", function() {
     return function(items, vanaf, totenmet) {
         var resultaat = [];        
         for (var i=0; i<items.length; i++){
@@ -315,3 +414,5 @@ app.filter("betweenFilter", function() {
         return resultaat;
     };
 });
+*/
+
