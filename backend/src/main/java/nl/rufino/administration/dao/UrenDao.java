@@ -27,9 +27,9 @@ public class UrenDao {
 		}
 	}
 	
-	public List<Uren> haalUrenOpVanKlant(String zoekWaarde) {
+	public List<Uren> haalUrenOpVanKlant(String naam) {
 		datastore.ensureIndexes();
-		List<Uren> queryResult = datastore.createQuery(Uren.class).field("klant").contains(zoekWaarde).asList();		
+		List<Uren> queryResult = datastore.createQuery(Uren.class).field("klant").contains(naam).asList();		
 		return queryResult;
 	}
 
