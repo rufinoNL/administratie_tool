@@ -16,10 +16,15 @@ public class UrenResourceImpl implements UrenResource{
 	}
 	
 	@Override
-	public Response haalUrenOpVanKlant(String naam) {
-		List<Uren> haalUrenOpVanKlant = urenDao.haalUrenOpVanKlant(naam);
+	public Response haalUrenOpVanKlant(String klantnaam) {
+		List<Uren> haalUrenOpVanKlant = urenDao.haalUrenOpVanKlant(klantnaam);
 		
 		return Response.ok().entity(haalUrenOpVanKlant).build();
+	}
+
+	@Override
+	public Response leeg() {
+		return Response.ok().build();
 	}
 
 }
