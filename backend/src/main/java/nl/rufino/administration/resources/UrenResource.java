@@ -10,6 +10,7 @@ import javax.ws.rs.core.Response;
 @Path("/")
 public interface UrenResource {
 	
+	@GET
 	@Path("klant")
 	@Produces(MediaType.APPLICATION_JSON)
 	Response haalUrenOpVanKlant(@QueryParam("naam") String naam);
