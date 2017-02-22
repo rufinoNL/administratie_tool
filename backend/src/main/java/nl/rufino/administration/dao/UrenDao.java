@@ -4,8 +4,6 @@ import java.util.List;
 
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
-import org.mongodb.morphia.geo.GeoJson;
-import org.mongodb.morphia.geo.Point;
 
 import com.mongodb.MongoClient;
 
