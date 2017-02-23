@@ -48,7 +48,8 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.8.3</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.keycloak/keycloak-core -->
+		
+		<!-- Keycloak -->
 		<dependency>
 			<groupId>org.keycloak</groupId>
 			<artifactId>keycloak-core</artifactId>

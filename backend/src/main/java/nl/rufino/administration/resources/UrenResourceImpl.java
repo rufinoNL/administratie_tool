@@ -27,4 +27,11 @@ public class UrenResourceImpl implements UrenResource{
 		return Response.ok().build();
 	}
 
+	@Override
+	public Response urenBinnenPeriode(String vanaf, String totenmet) {
+		List<Uren> urenBinnenPeriode = urenDao.urenBinnenPeriode(vanaf, totenmet);
+		
+		return Response.ok().entity(urenBinnenPeriode).build();
+	}
+
 }
