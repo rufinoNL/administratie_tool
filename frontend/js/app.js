@@ -1,4 +1,15 @@
-var app = angular.module('JRSE', []);
+var app = angular.module('JRSE', ['ngResource']);
+
+app.config(function($httpProvider, $resourceProvider){
+    $resourceProvider.defaults.stripTrailingSlashes = false;
+})
+
+app.factory("Urenresource", function($resource){
+    return $resource("http://localhost:8080/administration-rest/rest/urenresource/:klantnaam",
+                    {},
+                    {query: {method: 'GET', isArray:true}}
+                    );
+});
 
 app.controller('ForecastController', function($scope){
     var box1 = {
@@ -144,10 +155,9 @@ app.controller('ForecastController', function($scope){
     };    
 });
 
-app.controller('UrenregistratieController', function($scope, UrenregistratieService, KlantenService){
+app.controller('UrenregistratieController', function($scope, UrenService, KlantenService){
+    $scope.urenservice = UrenService;
     $scope.klanten = KlantenService.klanten;
-    
-    $scope.uren = UrenregistratieService.uren;
     
     $scope.urenreg = {
         invoer:{
@@ -174,8 +184,9 @@ app.controller('UrenregistratieController', function($scope, UrenregistratieServ
                 selectie: []
             },
             maak: function(){
-                //TODO: vervang met service
-                var items = $scope.uren;
+                $scope.urenservice.loadUren();
+                var items = $scope.urenservice.uren;
+                console.log(items);
                 var resultaat = [];
                 
                 for (var i=0; i<items.length; i++){
@@ -188,7 +199,7 @@ app.controller('UrenregistratieController', function($scope, UrenregistratieServ
                     }
                 } 
             
-                this.data = resultaat;
+                this.data = items;
             },
             data: [],
             totaal: function(){
@@ -217,6 +228,27 @@ app.controller('UrenregistratieController', function($scope, UrenregistratieServ
             }
         }
     }
+});
+
+app.service('UrenService', function(Urenresource){
+
+    var self = {
+        'page': 1,
+        'hasMore': true,
+        'isLoading': false,
+        'uren': [],
+        'loadUren': function(){
+            Urenresource.query({klantnaam:'IT intermediair 2'},function(data){
+                console.log(data); 
+
+                for(var i=0;i<data.length;i++){
+                    self.uren.push(new Urenresource(data[i]))
+                }
+            })        
+        }
+    };
+    
+    return self;
 });
 
 app.service('KlantenService', function(){
@@ -284,136 +316,8 @@ app.service('KlantenService', function(){
             }
         ]  
     };
-})
-
-app.service('UrenregistratieService', function(){
-    //Echte call naar REST endpoint
-    return {
-        uren: [
-        {
-            datum:  '2012-04-23T18:25:43.511Z',
-            klant: 'IT intermediair 1',
-            opdracht:                 
-                {
-                    klant: 'JouwBank.nl',
-                    straat: 'Straatje',
-                    huisnummer: 385,
-                    huisnummertoev: '',
-                    postcode: '3511 DT',
-                    plaats: 'Utrecht'
-                },
-            uren: 9,
-            tarief: 52.5
-        },
-        {
-            datum:  '2012-04-21T00:00:00.000Z',
-            klant: 'IT intermediair 1',
-            opdracht:                 
-                {
-                    klant: 'AFGE B.V.',
-                    straat: 'Straatje',
-                    huisnummer: 385,
-                    huisnummertoev: '',
-                    postcode: '3511 DT',
-                    plaats: 'Utrecht'
-                },
-            uren: 9,
-            tarief: 52.5
-        },
-        {
-            datum:  '2012-05-23T18:25:43.511Z',
-            klant: 'IT intermediair 1',
-            opdracht:                 
-                {
-                    klant: 'Y ME V.O.F.',
-                    straat: 'Straatje',
-                    huisnummer: 385,
-                    huisnummertoev: '',
-                    postcode: '3511 DT',
-                    plaats: 'Utrecht'
-                },
-            uren: 8.25,
-            tarief: 52.5
-        },
-        {
-            datum:  '2012-04-23T18:25:43.511Z',
-            klant: 'IT intermediair 2',
-            opdracht:                 
-                {
-                    klant: 'Websitebouwer B.V.',
-                    straat: 'Straatje',
-                    huisnummer: 385,
-                    huisnummertoev: '',
-                    postcode: '3511 DT',
-                    plaats: 'Utrecht'
-                },
-            uren: 7.75,
-            tarief: 67
-        },
-        {
-            datum:  '2012-04-24T18:25:43.511Z',
-            klant: 'IT intermediair 2',
-            opdracht:                 
-                {
-                    klant: 'Websitebouwer B.V.',
-                    straat: 'Straatje',
-                    huisnummer: 385,
-                    huisnummertoev: '',
-                    postcode: '3511 DT',
-                    plaats: 'Utrecht'
-                },
-            uren: 5.75,
-            tarief: 67
-        },
-        {
-            datum:  '2012-04-25T18:25:43.511Z',
-            klant: 'IT intermediair 2',
-            opdracht:                 
-                {
-                    klant: 'Websitebouwer B.V.',
-                    straat: 'Straatje',
-                    huisnummer: 385,
-                    huisnummertoev: '',
-                    postcode: '3511 DT',
-                    plaats: 'Utrecht'
-                },
-            uren: 8.5,
-            tarief: 67
-        },
-        {
-            datum:  '2012-04-26T18:25:43.511Z',
-            klant: 'IT intermediair 2',
-            opdracht:                 
-                {
-                    klant: 'Websitebouwer B.V.',
-                    straat: 'Straatje',
-                    huisnummer: 385,
-                    huisnummertoev: '',
-                    postcode: '3511 DT',
-                    plaats: 'Utrecht'
-                },
-            uren: 8.75,
-            tarief: 67
-        },
-        {
-            datum:  '2012-04-27T18:25:43.511Z',
-            klant: 'IT intermediair 2',
-            opdracht:                 
-                {
-                    klant: 'Websitebouwer B.V.',
-                    straat: 'Straatje',
-                    huisnummer: 385,
-                    huisnummertoev: '',
-                    postcode: '3511 DT',
-                    plaats: 'Utrecht'
-                },
-            uren: 6.25,
-            tarief: 67
-        }
-        
-    ]
-    };
 });
+
 /*
 app.filter("filterBetween", function() {
     return function(items, vanaf, totenmet) {
@@ -429,4 +333,3 @@ app.filter("filterBetween", function() {
     };
 });
 */
-
