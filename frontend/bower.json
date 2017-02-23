@@ -1,0 +1,10 @@
+{
+  "name": "administration-tool",
+  "version": "0.0.1",
+    "directory": "libs",
+  "dependencies": {
+    "angular": "",
+    "angular-resource": ""
+  },
+  "private": true
+}

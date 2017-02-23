@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="JRSE">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>JRSE -Financien</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">JRSE Finance</a>
+            </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+                <li class="dropdown">
+                    <ul class="dropdown-menu message-dropdown">
+                        <li class="message-preview">
+                            <a href="#">
+                                <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                                    <div class="media-body">
+                                        <h5 class="media-heading">
+                                            <strong>Jonathan Ramos</strong>
+                                        </h5>
+                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="message-preview">
+                            <a href="#">
+                                <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                                    <div class="media-body">
+                                        <h5 class="media-heading">
+                                            <strong>John Smith</strong>
+                                        </h5>
+                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="message-preview">
+                            <a href="#">
+                                <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                                    <div class="media-body">
+                                        <h5 class="media-heading">
+                                            <strong>John Smith</strong>
+                                        </h5>
+                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="message-footer">
+                            <a href="#">Read All New Messages</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- Account -->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li class="active">
+                        <a href="forecast.html"><i class="fa fa-fw"></i>Forecast</a>
+                    </li>
+                    <li class="active">
+                        <a href="urenregistratie.html"><i class="fa fa-fw"></i>Urenregistratie</a>
+                    </li>
+                    <li class="active">
+                        <a href="facturatie.html"><i class="fa fa-fw"></i>Facturatie</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Urenregistratie
+                        </h1>
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="row"
+                     ng-controller="UrenregistratieController">
+                    <!-- --------------------------------------------------------------------------------------------- Input stuff -->
+                    <div class="col-lg-4">
+                        <h3>Invoer</h3>
+                        <div>
+                            <label>Datum</label>
+                            <input class="form-control"
+                                   type="date"
+                                   ng-model="urenreg.invoer.datum">
+                        </div>
+                        <div>
+                            <label>Klant</label>
+                            <select class="form-control" 
+                                    ng-model="urenreg.invoer.klant"
+                                    ng-options="klant.naam for klant in klanten"
+                                    ng-change="urenreg.invoer.zetLocaties()">
+                            </select>
+                        </div>
+                        <div>
+                            <label>Uren</label>
+                            <input class="form-control"
+                                   type="number"
+                                   step="0.25"
+                                   ng-model="urenreg.invoer.uren">
+                        </div>
+                        <div>
+                            <label>Opdracht</label>
+                            <select class="form-control" 
+                                    ng-model="urenreg.invoer.locatie"
+                                    ng-options="u for u in urenreg.invoer.locaties">
+                            </select>
+                        </div>
+                        <div>
+                            <hr>
+                            <button class="btn btn-default">Verzenden</button>
+                        </div>
+                    </div>
+                    <!-- Weergave -->
+                    <div class="col-lg-8">
+                        <h3>Overzicht gemaakte uren</h3>
+                        <div>
+                            <div class="form-group input-group">
+                                <span class="input-group-addon"><i>Van</i></span>
+                                <input class="form-control"
+                                       type="date"
+                                       ng-model="urenreg.overzicht.vanaf">
+                                <span class="input-group-addon"><i>Tm</i></span>
+                                <input class="form-control"
+                                       type="date"
+                                       ng-model="urenreg.overzicht.totenmet">
+                            </div>
+                            <button class="btn btn-default" ng-click="urenreg.overzicht.maak()">Overzicht maken</button>
+                            <hr>
+                            <div class="table-responsive">
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Vanaf</th>
+                                            <th>Tot en met</th>
+                                            <th>Totaal uren</th>
+                                            <th>Omzet</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>{{urenreg.overzicht.totaal().periode.vanaf}}</td>
+                                            <td>{{urenreg.overzicht.totaal().periode.totenmet}}</td>
+                                            <td>{{urenreg.overzicht.totaal().uren}}</td>
+                                            <td>€ {{urenreg.overzicht.totaal().omzet | number:2}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="form-group input-group">
+                                <span class="input-group-addon"><i>Filter</i></span>
+                                <input class="form-control" 
+                                        ng-model="urenreg.overzicht.filter.selectie">
+                            </div>   
+                            <div class="table-responsive">
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Klant</th>
+                                            <th>Datum</th>
+                                            <th>Opdracht</th>
+                                            <th>Uren</th>
+                                            <th>Tarief</th>
+                                            <th>Omzet</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody ng-repeat="d in urenreg.overzicht.data | filter:urenreg.overzicht.filter.selectie" >
+                                        <tr>
+                                            <td>{{d.klant}}</td>
+                                            <td>{{d.datum | date:'dd-MM-yyyy'}}</td>
+                                            <td>{{d.opdracht.klant}}</td>
+                                            <td>{{d.uren}}</td>
+                                            <td>€ {{d.tarief | number:2}}</td>
+                                            <td>€ {{d.omzet | number:2}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="libs/angular/angular.js" type="application/javascript"></script>
+    <script src="libs/angular-resource/angular-resource.js" type="application/javascript"></script>
+    <script src="js/jquery.js" type="application/javascript"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js" type="application/javascript"></script>
+    <script src="js/app.js" type="application/javascript"></script>
+
+</body>
+
+</html>
