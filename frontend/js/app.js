@@ -226,7 +226,7 @@ app.controller('UrenregistratieController', function($scope, UrenService, Klante
                     }
                 } 
             
-                this.data = items;
+                this.data = resultaat;
             },
             data: [],
             totaal: function() {
@@ -261,6 +261,7 @@ app.service('UrenService', function(Urenresource) {
             var params = {vanaf: v, totenmet: t};
             
             Urenresource.query(params,function(data) {
+                self.uren = [];
                 console.log(data); 
 
                 for(var i=0;i<data.length;i++) {
