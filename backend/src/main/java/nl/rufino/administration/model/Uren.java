@@ -21,7 +21,7 @@ public class Uren {
 	@Property("uren")
 	private int uren;
 	@Property("tarief")
-	private BigDecimal tarief;
+	private Double tarief;
 
 	public int getUren() {
 		return uren;
@@ -55,11 +55,11 @@ public class Uren {
 		this.opdracht = opdracht;
 	}
 
-	public BigDecimal getTarief() {
+	public Double getTarief() {
 		return tarief;
 	}
 
-	public void setTarief(BigDecimal tarief) {
+	public void setTarief(Double tarief) {
 		this.tarief = tarief;
 	}
 }
