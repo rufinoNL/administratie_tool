@@ -30,5 +30,4 @@ public class UrenDao {
 		List<Uren> queryResult = datastore.createQuery(Uren.class).field("klant").contains(naam).asList();		
 		return queryResult;
 	}
-
 }

@@ -238,7 +238,7 @@ app.service('UrenService', function(Urenresource){
         'isLoading': false,
         'uren': [],
         'loadUren': function(){
-            Urenresource.query({klantnaam:'ITINT'},function(data){
+            Urenresource.query({klantnaam:'IT intermediair 2'},function(data){
                 console.log(data); 
 
                 for(var i=0;i<data.length;i++){
