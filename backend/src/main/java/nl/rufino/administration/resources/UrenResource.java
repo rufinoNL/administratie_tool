@@ -18,4 +18,9 @@ public interface UrenResource {
 	@Path("/{klantnaam}")
 	@Produces(MediaType.APPLICATION_JSON)
 	Response haalUrenOpVanKlant(@PathParam("klantnaam") String klantnaam);
+	
+	@GET
+	@Path("/{vanaf}/{totenmet}")
+	@Produces(MediaType.APPLICATION_JSON)
+	Response urenBinnenPeriode(@PathParam("vanaf") String vanaf, @PathParam("totenmet") String totenmet);
 }
