@@ -213,7 +213,6 @@ app.controller('UrenregistratieController', function($scope, UrenService, Klante
             maak: function() {
                 $scope.urenservice.loadUren(this.vanafFormatted(), this.totenmetFormatted());
                 var items = $scope.urenservice.uren;
-                console.log(items);
                 var resultaat = [];
                 
                 for (var i=0; i<items.length; i++) {
@@ -227,11 +226,11 @@ app.controller('UrenregistratieController', function($scope, UrenService, Klante
                 } 
             
                 this.data = resultaat;
+                this.totaal();
             },
             data: [],
             totaal: function() {
                 var resultaat = {
-                    periode: {},
                     omzet: 0,
                     uren: 0
                 };
@@ -240,9 +239,6 @@ app.controller('UrenregistratieController', function($scope, UrenService, Klante
                     resultaat.uren += this.data[i].uren;
                     resultaat.omzet += this.data[i].uren * this.data[i].tarief;
                 }
-                
-                resultaat.periode.vanaf = this.vanafFormatted();
-                resultaat.periode.totenmet = this.totenmetFormatted();
                                 
                 return resultaat;
             }
