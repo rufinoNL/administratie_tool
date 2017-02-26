@@ -148,111 +148,73 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Urenregistratie
+                            Klanten
                         </h1>
                     </div>
                 </div>
                 <!-- /.row -->
                 <div class="row"
-                     ng-controller="UrenregistratieController">
+                     ng-controller="KlantenController">
                     <!-- --------------------------------------------------------------------------------------------- Input stuff -->
-                    <div class="col-lg-4">
-                        <h3>Invoer</h3>
-                        <div>
-                            <label>Datum</label>
-                            <input class="form-control"
-                                   type="date"
-                                   ng-model="urenreg.invoer.datum">
-                        </div>
-                        <div>
-                            <label>Klant</label>
-                            <select class="form-control" 
-                                    ng-model="urenreg.invoer.klant"
-                                    ng-options="klant.naam for klant in klanten"
-                                    ng-change="urenreg.invoer.zetLocaties()">
-                            </select>
-                        </div>
-                        <div>
-                            <label>Uren</label>
+                    <div class="col-lg-6">
+                        <h3>Klanten invoeren</h3>
+                        <div class="col-lg-4"><label>Klantnaam: </label></div>    
+                        <div class="col-lg-8">
                             <input class="form-control"
                                    type="number"
-                                   step="0.25"
-                                   ng-model="urenreg.invoer.uren">
+                                   ng-model="klantreg.klant.klantnummer">
                         </div>
-                        <div>
-                            <label>Opdracht</label>
-                            <select class="form-control" 
-                                    ng-model="urenreg.invoer.locatie"
-                                    ng-options="u for u in urenreg.invoer.locaties">
-                            </select>
+                        <div class="col-lg-4"><label>Bedrijfsnaam:</label></div>    
+                        <div class="col-lg-8">
+                            <input class="form-control"
+                                   type="text"
+                                   ng-model="klantreg.klant.bedrijfsnaam">
                         </div>
-                        <div>
+                        <div class="col-lg-12"><hr></div>
+                        <div class="col-lg-3"><label>T.a.v. :</label></div>    
+                        <div class="col-lg-9">
+                            <input class="form-control"
+                                   type="text"
+                                   ng-model="klantreg.klant.tav">
+                        </div>
+                        <div class="col-lg-3"><label>Straat</label></div>    
+                        <div class="col-lg-9">
+                            <input class="form-control"
+                                   type="text"
+                                   ng-model="klantreg.klant.straat">
+                        </div>
+                        <div class="col-lg-3"><label>Huisnummer</label></div>    
+                        <div class="col-lg-3">
+                            <input class="form-control"
+                                   type="text"
+                                   ng-model="klantreg.klant.huisnummer">
+                        </div>
+                        <div class="col-lg-3"><label>Toevoeging</label></div>    
+                        <div class="col-lg-3">
+                            <input class="form-control"
+                                   type="text"
+                                   ng-model="klantreg.klant.huisnummertoev">
+                        </div>
+                        <div class="col-lg-3"><label>Postcode</label></div>    
+                        <div class="col-lg-3">
+                            <input class="form-control"
+                                   type="text"
+                                   ng-model="klantreg.klant.postcode">
+                        </div>
+                        <div class="col-lg-2"><label>Plaats</label></div>    
+                        <div class="col-lg-4">
+                            <input class="form-control"
+                                   type="text"
+                                   ng-model="klantreg.klant.plaats">
+                        </div>
+                        <div class="col-lg-12">
                             <hr>
-                            <button class="btn btn-default">Verzenden</button>
+                            <button class="btn btn-default">Importeren</button>
                         </div>
                     </div>
                     <!-- Weergave -->
-                    <div class="col-lg-8">
-                        <h3>Overzicht gemaakte uren</h3>
-                        <div>
-                            <div class="form-group input-group">
-                                <span class="input-group-addon"><i>Van</i></span>
-                                <input class="form-control"
-                                       type="date"
-                                       ng-model="urenreg.overzicht.vanaf">
-                                <span class="input-group-addon"><i>Tm</i></span>
-                                <input class="form-control"
-                                       type="date"
-                                       ng-model="urenreg.overzicht.totenmet">
-                            </div>
-                            <button class="btn btn-default" ng-click="urenreg.overzicht.maak()">Overzicht maken</button>
-                            <hr>
-                            <div class="table-responsive">
-                                <table class="table table-hover table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Totaal uren</th>
-                                            <th>Omzet</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>{{urenreg.overzicht.totaal().uren}}</td>
-                                            <td>€ {{urenreg.overzicht.totaal().omzet | number:2}}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="form-group input-group">
-                                <span class="input-group-addon"><i>Filter</i></span>
-                                <input class="form-control" 
-                                        ng-model="urenreg.overzicht.filter.selectie">
-                            </div>   
-                            <div class="table-responsive">
-                                <table class="table table-hover table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Klant</th>
-                                            <th>Datum</th>
-                                            <th>Opdracht</th>
-                                            <th>Uren</th>
-                                            <th>Tarief</th>
-                                            <th>Omzet</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody ng-repeat="d in urenreg.overzicht.data | filter:urenreg.overzicht.filter.selectie" >
-                                        <tr>
-                                            <td>{{d.klant}}</td>
-                                            <td>{{d.datum | date:'dd-MM-yyyy'}}</td>
-                                            <td>{{d.opdracht.klant}}</td>
-                                            <td>{{d.uren}}</td>
-                                            <td>€ {{d.tarief | number:2}}</td>
-                                            <td>€ {{d.omzet | number:2}}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                    <div class="col-lg-6">
+                        <h3>Klanten overzicht</h3>
                     </div>
                 </div>
             </div>
