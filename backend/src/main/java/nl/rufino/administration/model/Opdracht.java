@@ -1,66 +1,49 @@
 package nl.rufino.administration.model;
 
+import java.util.List;
+
+import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Property;
 
 public class Opdracht {
-	@Property("klant")
-	private String klant;
-	@Property("straat")
-	private String straat;
-	@Property("huisnummer")
-	private int huisnummer;
-	@Property("huisnummertoev")
-	private String huisnummerToev;
-	@Property("postcode")
-	private String postcode;
-	@Property("plaats")
-	private String plaats;
+	@Embedded
+	private Klant klant;
+	@Embedded
+	private Adres adres;
+	@Property
+	private List<Klant> opdrachten;
+	@Property
+	private Double tarief;
 
-	public String getKlant() {
+	public Klant getKlant() {
 		return klant;
 	}
 
-	public void setKlant(String klant) {
+	public void setKlant(Klant klant) {
 		this.klant = klant;
 	}
 
-	public String getStraat() {
-		return straat;
+	public Adres getAdres() {
+		return adres;
 	}
 
-	public void setStraat(String straat) {
-		this.straat = straat;
+	public void setAdres(Adres adres) {
+		this.adres = adres;
 	}
 
-	public int getHuisnummer() {
-		return huisnummer;
+	public List<Klant> getOpdrachten() {
+		return opdrachten;
 	}
 
-	public void setHuisnummer(int huisnummer) {
-		this.huisnummer = huisnummer;
+	public void setOpdrachten(List<Klant> opdrachten) {
+		this.opdrachten = opdrachten;
 	}
 
-	public String getHuisnummerToev() {
-		return huisnummerToev;
+	public Double getTarief() {
+		return tarief;
 	}
 
-	public void setHuisnummerToev(String huisnummerToev) {
-		this.huisnummerToev = huisnummerToev;
-	}
-
-	public String getPostcode() {
-		return postcode;
-	}
-
-	public void setPostcode(String postcode) {
-		this.postcode = postcode;
-	}
-
-	public String getPlaats() {
-		return plaats;
-	}
-
-	public void setPlaats(String plaats) {
-		this.plaats = plaats;
+	public void setTarief(Double tarief) {
+		this.tarief = tarief;
 	}
 }

@@ -9,10 +9,6 @@ import javax.ws.rs.core.Response;
 
 @Path("/urenresource")
 public interface UrenResource {
-	
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	Response leeg();
 
 	@GET
 	@Path("/{klantnaam}")
