@@ -16,8 +16,13 @@ app.factory("Urenresource", function($resource) {
                             method: 'GET', 
                             isArray:true
                         }
-                    }
-                    );
+                    }                
+    );
+});
+
+app.factory("Klantenresource", function($resource) {
+    return $resource(
+            "http://localhost:8080/administration-rest/rest/klantenresource/importeer/:id");
 });
 
 app.controller('ForecastController', function($scope) {
@@ -165,7 +170,7 @@ app.controller('ForecastController', function($scope) {
 });
 
 app.controller('UrenregistratieController', function($scope, UrenService, KlantenService) {
-    $scope.urenservice = UrenService;
+    var urenservice = UrenService;
     $scope.klanten = KlantenService.klanten;
     
     $scope.urenreg = {
@@ -211,8 +216,8 @@ app.controller('UrenregistratieController', function($scope, UrenService, Klante
                 selectie: []
             },
             maak: function() {
-                $scope.urenservice.loadUren(this.vanafFormatted(), this.totenmetFormatted());
-                var items = $scope.urenservice.uren;
+                urenservice.loadUren(this.vanafFormatted(), this.totenmetFormatted());
+                var items = urenservice.uren;
                 var resultaat = [];
                 
                 for (var i=0; i<items.length; i++) {
@@ -246,6 +251,29 @@ app.controller('UrenregistratieController', function($scope, UrenService, Klante
     }
 });
 
+app.controller('KlantenController', function($scope, KlantenService){
+    var klantenservice = KlantenService;
+    $scope.klantreg = {
+        klant: {
+            klantnummer: 0,
+            bedrijfsnaam: "",
+            contactpersoon: "",
+            adres: {
+                straat: "",
+                huisnummer: 0,
+                huisnummertoev: "",
+                postcode: "",
+                plaats: ""
+            }
+        },
+        importeer: function(){
+            console.log("klant binding: " + this.klant);
+            klantenservice.importeer(this.klant);
+        }
+        
+    }
+});
+
 app.service('UrenService', function(Urenresource) {
 
     var self = {
@@ -270,8 +298,37 @@ app.service('UrenService', function(Urenresource) {
     return self;
 });
 
-app.service('KlantenService', function() {
-    return {
+app.service('KlantenService', function(Klantenresource) {
+    var self = {
+        'page': 1,
+        'hasMore': true,
+        'isLoading': false,
+        'klant': [],
+        'importeer': function(data){
+            Klantenresource.save(data, function(test){
+                console.log(test);
+            })
+        }      
+    };
+    return self;
+});
+
+/*
+app.filter("filterBetween", function() {
+    return function(items, vanaf, totenmet) {
+        var resultaat = [];        
+        for (var i=0; i<items.length; i++) {
+            var datum = new Date(items[i].datum);
+        
+            if (datum >= vanaf && datum <= totenmet)  {
+                resultaat.push(items[i]);
+            }
+        }     
+        return resultaat;
+    };
+});
+
+ return {
         klanten: [
             {
                 klantnummer: 23,
@@ -335,20 +392,4 @@ app.service('KlantenService', function() {
             }
         ]  
     };
-});
-
-/*
-app.filter("filterBetween", function() {
-    return function(items, vanaf, totenmet) {
-        var resultaat = [];        
-        for (var i=0; i<items.length; i++) {
-            var datum = new Date(items[i].datum);
-        
-            if (datum >= vanaf && datum <= totenmet)  {
-                resultaat.push(items[i]);
-            }
-        }     
-        return resultaat;
-    };
-});
 */

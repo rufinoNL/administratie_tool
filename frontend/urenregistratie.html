@@ -232,7 +232,7 @@
                                 <table class="table table-hover table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Klant</th>
+                                            <th>Bedrijfsnaam</th>
                                             <th>Datum</th>
                                             <th>Opdracht</th>
                                             <th>Uren</th>
@@ -242,7 +242,7 @@
                                     </thead>
                                     <tbody ng-repeat="d in urenreg.overzicht.data | filter:urenreg.overzicht.filter.selectie" >
                                         <tr>
-                                            <td>{{d.klant}}</td>
+                                            <td>{{d.bedrijfsnaam}}</td>
                                             <td>{{d.datum | date:'dd-MM-yyyy'}}</td>
                                             <td>{{d.opdracht.klant}}</td>
                                             <td>{{d.uren}}</td>

@@ -24,11 +24,6 @@ public class UrenResourceImpl implements UrenResource{
 	}
 
 	@Override
-	public Response leeg() {
-		return Response.ok().build();
-	}
-
-	@Override
 	public Response urenBinnenPeriode(String vanaf, String totenmet) {
 		String checkedVanaf = checkDatum(vanaf);
 		String checkedTotenmet= checkDatum(totenmet);

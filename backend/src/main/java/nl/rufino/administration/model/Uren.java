@@ -10,32 +10,16 @@ import org.mongodb.morphia.annotations.Property;
 public class Uren {
 	@Id
 	private ObjectId _id;
-	@Property("datum")
+	@Property
 	private String datum;
-	@Property("klant")
-	private String klant;
+	@Embedded
+	private Klant klant;
 	@Embedded
 	private Opdracht opdracht;
-	@Property("uren")
+	@Property
 	private int uren;
-	@Property("tarief")
+	@Property
 	private Double tarief;
-
-	public int getUren() {
-		return uren;
-	}
-
-	public void setUren(int uren) {
-		this.uren = uren;
-	}
-
-	public String getKlant() {
-		return klant;
-	}
-
-	public void setKlant(String klant) {
-		this.klant = klant;
-	}
 
 	public ObjectId get_id() {
 		return _id;
@@ -43,6 +27,22 @@ public class Uren {
 
 	public void set_id(ObjectId _id) {
 		this._id = _id;
+	}
+
+	public String getDatum() {
+		return datum;
+	}
+
+	public void setDatum(String datum) {
+		this.datum = datum;
+	}
+
+	public Klant getKlant() {
+		return klant;
+	}
+
+	public void setKlant(Klant klant) {
+		this.klant = klant;
 	}
 
 	public Opdracht getOpdracht() {
@@ -53,6 +53,14 @@ public class Uren {
 		this.opdracht = opdracht;
 	}
 
+	public int getUren() {
+		return uren;
+	}
+
+	public void setUren(int uren) {
+		this.uren = uren;
+	}
+
 	public Double getTarief() {
 		return tarief;
 	}
@@ -61,11 +69,4 @@ public class Uren {
 		this.tarief = tarief;
 	}
 
-	public String getDatum() {
-		return datum;
-	}
-
-	public void setDatum(String datum) {
-		this.datum = datum;
-	}
 }
