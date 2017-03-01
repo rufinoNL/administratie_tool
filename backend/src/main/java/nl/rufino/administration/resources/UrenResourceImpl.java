@@ -47,5 +47,12 @@ public class UrenResourceImpl implements UrenResource{
 		}
 		return splitDatum[0] + "-" + splitDatum[1] + "-" + splitDatum[2];
 	}
+	
+	@Override
+	public Response invoeren(String json) {
+		urenDao.urenInvoeren(json);
+			
+		return Response.ok().build();
+	}
 
 }

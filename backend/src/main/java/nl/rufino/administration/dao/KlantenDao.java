@@ -20,7 +20,6 @@ public class KlantenDao{
 		mapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_CONCRETE_AND_ARRAYS);
 		try {
 			Klant klant = mapper.readValue(json, Klant.class);
-			System.out.println(klant);
 			datastore.save(klant);
 		} catch (JsonParseException e) {
 			e.printStackTrace();

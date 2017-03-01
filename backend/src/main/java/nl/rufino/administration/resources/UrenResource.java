@@ -1,6 +1,7 @@
 package nl.rufino.administration.resources;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -19,4 +20,9 @@ public interface UrenResource {
 	@Path("/{vanaf}/{totenmet}")
 	@Produces(MediaType.APPLICATION_JSON)
 	Response urenBinnenPeriode(@PathParam("vanaf") String vanaf, @PathParam("totenmet") String totenmet);
+	
+	@POST
+	@Path("/invoeren")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response invoeren(String json);
 }
