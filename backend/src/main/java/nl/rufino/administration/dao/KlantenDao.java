@@ -1,6 +1,7 @@
 package nl.rufino.administration.dao;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.mongodb.morphia.Datastore;
 
@@ -28,5 +29,10 @@ public class KlantenDao{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public List<Klant> haalAlleKlantenOp() {
+		List<Klant> klanten = datastore.createQuery(Klant.class).asList();
+		return klanten;
 	}
 }

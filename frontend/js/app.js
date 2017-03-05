@@ -13,8 +13,7 @@ app.factory("Urenresource", function($resource) {
                     },
                     {
                         query: {
-                            method: 'GET', 
-                            isArray:true
+                            method: 'GET', isArray:true
                         }
                     }                
     );
@@ -22,7 +21,15 @@ app.factory("Urenresource", function($resource) {
 
 app.factory("Klantenresource", function($resource) {
     return $resource(
-            "http://localhost:8080/administration-rest/rest/klantenresource/importeer/:id");
+            "http://localhost:8080/administration-rest/rest/klantenresource/:id",
+                    {
+                    },
+                    {
+                        get: {
+                            method: 'GET', isArray:true
+                        }
+                    }
+    );
 });
 
 app.controller('ForecastController', function($scope) {
@@ -171,24 +178,30 @@ app.controller('ForecastController', function($scope) {
 
 app.controller('UrenregistratieController', function($scope, UrenService, KlantenService) {
     var urenservice = UrenService;
-    $scope.klanten = KlantenService.klanten;
+    var klantenservice = KlantenService;
     
+    klantenservice.laadKlanten();
+    $scope.klanten = klantenservice.klanten;
+     
     $scope.urenreg = {
         invoer: {
             uren: 0,
             datum: new Date(),
-            klant: '',
-            locatie: '',
-            locaties: ["-- selecteer eerst een klant --"],
-            zetLocaties: function() {
-                var l = [];
-                for(var i=0;i<this.klant.opdrachten.length;i++) {
-                    var adresObj = this.klant.opdrachten[i];
-                    var adres = adresObj.klant + ', ' + adresObj.postcode + ' ' + adresObj.huisnummer + adresObj.huisnummertoev + ' ' + adresObj.plaats;
+            klant: {},
+            opdracht: '',
+            opdrachten: ["-- selecteer eerst een klant --"],
+            zetOpdrachten: function() {
+                var temp = [];
+                console.log(this.klant);
+                if(this.klant!=null && this.klant.opdrachten != undefined){
+                    for(var i=0;i<this.klant.opdrachten.length;i++) {
+                        var adresObj = this.klant.opdrachten[i];
+                        var adres = adresObj.klant + ', ' + adresObj.postcode + ' ' + adresObj.huisnummer + adresObj.huisnummertoev + ' ' + adresObj.plaats;
 
-                    l.push(adres);
+                        temp.push(adres);
+                    }
                 }
-                this.locaties = l;
+                this.opdrachten = temp;
             }
         },
         overzicht: {
@@ -285,9 +298,6 @@ app.service('UrenService', function(Urenresource) {
             var params = {vanaf: v, totenmet: t};
             
             Urenresource.query(params,function(data) {
-                self.uren = [];
-                console.log(data); 
-
                 for(var i=0;i<data.length;i++) {
                     self.uren.push(new Urenresource(data[i]))
                 }
@@ -303,12 +313,17 @@ app.service('KlantenService', function(Klantenresource) {
         'page': 1,
         'hasMore': true,
         'isLoading': false,
-        'klant': [],
+        'klanten': [],
         'importeer': function(data){
-            Klantenresource.save(data, function(test){
-                console.log(test);
+            Klantenresource.save(data);
+        },
+        'laadKlanten': function(){
+            Klantenresource.get(function(data){
+                for(var i=0;i<data.length;i++) {
+                    self.klanten.push(new Klantenresource(data[i]))
+                }
             })
-        }      
+        }
     };
     return self;
 });
