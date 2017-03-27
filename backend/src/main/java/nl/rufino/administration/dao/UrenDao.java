@@ -4,10 +4,13 @@ import java.util.List;
 
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.query.Query;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import nl.rufino.administration.model.Uren;
 
 public class UrenDao {
+	private static final Logger LOG = LoggerFactory.getLogger(UrenDao.class);
 	private Datastore datastore = MongoDBConnector.getDatastore();
 	
 	public List<Uren> haalUrenOpVanKlant(String naam) {

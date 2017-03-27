@@ -53,4 +53,10 @@ public class Adres {
 	public void setPlaats(String plaats) {
 		this.plaats = plaats;
 	}
+
+	@Override
+	public String toString() {
+		return "Adres [straat=" + straat + ", huisnummer=" + huisnummer + ", huisnummertoev=" + huisnummertoev
+				+ ", postcode=" + postcode + ", plaats=" + plaats + "]";
+	}
 }

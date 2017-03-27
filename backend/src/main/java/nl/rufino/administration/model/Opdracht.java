@@ -46,4 +46,10 @@ public class Opdracht {
 	public void setTarief(Double tarief) {
 		this.tarief = tarief;
 	}
+
+	@Override
+	public String toString() {
+		return "Opdracht [klant=" + klant + ", adres=" + adres + ", opdrachten=" + opdrachten + ", tarief=" + tarief
+				+ "]";
+	}
 }

@@ -69,4 +69,9 @@ public class Uren {
 		this.tarief = tarief;
 	}
 
+	@Override
+	public String toString() {
+		return "Uren [_id=" + _id + ", datum=" + datum + ", klant=" + klant + ", opdracht=" + opdracht + ", uren="
+				+ uren + ", tarief=" + tarief + "]";
+	}
 }

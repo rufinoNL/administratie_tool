@@ -5,15 +5,21 @@ import java.util.List;
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.core.Response;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import nl.rufino.administration.dao.KlantenDao;
 import nl.rufino.administration.dao.UrenDao;
 import nl.rufino.administration.model.Uren;
 
 public class UrenResourceImpl implements UrenResource{
+	private static final Logger LOG = LoggerFactory.getLogger(UrenResourceImpl.class);
 
 	private UrenDao urenDao;
 	
 	public UrenResourceImpl() {
 		urenDao = new UrenDao();
+		LOG.info(getClass().getName() + " geinitialiseerd");
 	}
 	
 	@Override
