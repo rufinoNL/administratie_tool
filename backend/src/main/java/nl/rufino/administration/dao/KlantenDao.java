@@ -14,7 +14,7 @@ import nl.rufino.administration.exception.DataOpslagException;
 import nl.rufino.administration.model.Klant;
 
 public class KlantenDao{
-	private Logger logger = LoggerFactory.getLogger(KlantenDao.class);
+	private static final Logger LOG = LoggerFactory.getLogger(KlantenDao.class);
 	private Datastore datastore = MongoDBConnector.getDatastore();
 	
 	public void importeerKlant(String json) throws DataOpslagException{
@@ -25,11 +25,11 @@ public class KlantenDao{
 			System.out.println(klant);
 			datastore.save(klant);
 		} catch (JsonParseException e) {
-			logger.error("Fout bij het parsen",e);
+			LOG.error("Fout bij het parsen",e);
 		} catch (JsonMappingException e) {
-			logger.error("Fout bij het mappen van JSON",e);
+			LOG.error("Fout bij het mappen van JSON",e);
 		} catch (IOException e) {
-			logger.error("Fout bij het opslaan",e);
+			LOG.error("Fout bij het opslaan",e);
 		}
 	}
 }
